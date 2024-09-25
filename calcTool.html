@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	
+	<!-- Head -->
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width" />
+		<title>Eoghan Biggane Portfolio</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<link rel="shortcut icon" type="img/jpg" href="./images/coding_icon.png">
+		<link rel="stylesheet" type="text/css" href="./stylesheet/calcTool.css">
+		<script src="./js/calcTool.js"> </script>
+	</head>
+
+	<!-- Main grid layout for the 4 tools -->
+	<div class="container mainContainer">
+		<div class="row">
+			<!-- Cone Cutout -->
+			<div class="col toolCol">
+				<h4>Cone Cutout</h4>
+				<div class="container">
+					<div class="row coneCutoutInputRow">
+						<div class="col coneCutoutPitchInput">
+							<div class="row">
+								<div class="col">
+
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_5" onclick="DefaultRadioClicked()">
+										<label class="form-check-label" for="conePitch_5">
+											5&deg;
+										</label>
+									</div>
+
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_15" onclick="DefaultRadioClicked()">
+										<label class="form-check-label" for="conePitch_15">
+											15&deg;
+										</label>
+									</div>
+							
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_25" onclick="DefaultRadioClicked()">
+										<label class="form-check-label" for="conePitch_25">
+											25&deg;
+										</label>
+									</div>
+									
+									<br>
+
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_custom" onclick="OtherRadioClicked()">
+										<label class="form-check-label" for="conePitch_custom">
+											Other: 
+										</label>
+									</div>
+									
+									<div class="form-check">
+										<input class="form-control" type="number" name="flexNumberInput" pattern="\d*" id="conePitch_customValue" disabled>
+									</div>
+
+								</div>
+
+								<div class="col">
+							
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_10" onclick="DefaultRadioClicked()">
+										<label class="form-check-label" for="conePitch_10">
+											10&deg;
+										</label>
+									</div>
+									
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_20" onclick="DefaultRadioClicked()">
+										<label class="form-check-label" for="conePitch_20">
+											20&deg;
+										</label>
+									</div>
+		
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_30" onclick="DefaultRadioClicked()" checked>
+										<label class="form-check-label" for="conePitch_30">
+											30&deg;
+										</label>
+									</div>
+									
+								</div>
+							</div>
+						</div>
+
+						<div class="col coneCutoutTankDimsInput">
+
+						</div>
+					</div>
+					<div class="row coneCutoutOutputRow"></div>
+				</div>
+			</div>
+
+			<!-- Shell Volume -->
+			<div class="col toolCol">
+				<h4>Shell Volume</h4>
+			</div>
+		</div>
+
+		<div class="row">
+			<!-- Vent -->
+			<div class="col toolCol">
+				<h4>Vent</h4>
+			</div>
+
+			<!-- Shell surface area -->
+			<div class="col toolCol">
+				<h4>Shell surface area</h4>
+			</div>
+		</div>
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>
