@@ -7,11 +7,13 @@ function CheckInput(input)
 function DefaultRadioClicked() 
 {
 	document.getElementById("conePitch_customValue").disabled = true;
+	AttemptConeCutoutOutput();
 }
 
 function OtherRadioClicked()
 {
 	document.getElementById("conePitch_customValue").disabled = false;
+	AttemptConeCutoutOutput();
 }
 
 function GetConePitch()
