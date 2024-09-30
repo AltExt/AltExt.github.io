@@ -101,17 +101,33 @@
 								<input class="form-control" id="knuckleValueInput" oninput="ValidateNumber(this)">
 							</div>
 
-							<button onclick="AttemptOutput()" > click</button>
+							<button onclick="AttemptConeCutoutOutput()" > click</button>
 						</div>
 					</div>
 
 					<div class="row coneCutoutOutputRow">
 						<div class="col">
+							<div class="mb-3">
+								<label for="coneTotalRadius" class="form-label">Cone Total Radius (mm)</label>
+								<input class="form-control" id="coneTotalRadius" readonly>
+							</div>
 
+							<div class="mb-3">
+								<label for="coneCutoutLength" class="form-label">Cone Cutout Length (mm)</label>
+								<input class="form-control" id="coneCutoutLength" readonly>
+							</div>
 						</div>
 
 						<div class="col">
+							<div class="mb-3">
+								<label for="coneSurfaceArea" class="form-label">Cone Surface Area</label>
+								<input class="form-control" id="coneSurfaceArea" readonly>
+							</div>
 
+							<div class="mb-3">
+								<label for="coneVolume" class="form-label">Cone Volume</label>
+								<input class="form-control" id="coneVolume" readonly>
+							</div>
 						</div>
 					</div>
 					
