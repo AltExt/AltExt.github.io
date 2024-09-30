@@ -15,6 +15,7 @@
 	<!-- Main grid layout for the 4 tools -->
 	<div class="container mainContainer">
 		<div class="row">
+
 			<!-- Cone Cutout -->
 			<div class="col toolCol">
 				<h4>Cone Cutout</h4>
@@ -22,8 +23,8 @@
 					<div class="row coneCutoutInputRow">
 						<div class="col coneCutoutPitchInput">
 							<div class="row">
+								<h6>Cone Pitch</h6>
 								<div class="col">
-
 									<div class="form-check">
 										<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_5" onclick="DefaultRadioClicked()">
 										<label class="form-check-label" for="conePitch_5">
@@ -55,7 +56,7 @@
 									</div>
 									
 									<div class="form-check">
-										<input class="form-control" type="number" name="flexNumberInput" pattern="\d*" id="conePitch_customValue" disabled>
+										<input class="form-control" name="flexNumberInput" id="conePitch_customValue" disabled oninput="ValidateNumber(this)">
 									</div>
 
 								</div>
@@ -89,9 +90,31 @@
 
 						<div class="col coneCutoutTankDimsInput">
 
+							<h6>Tank Dimensions</h6>
+							<div class="mb-3">
+								<label for="tankRadiusInput" class="form-label">Tank Radius</label>
+								<input class="form-control" id="tankRadiusInput" oninput="ValidateNumber(this)">
+							</div>
+
+							<div class="mb-3">
+								<label for="knuckleValueInput" class="form-label">Value Added for Knuckle (A)</label>
+								<input class="form-control" id="knuckleValueInput" oninput="ValidateNumber(this)">
+							</div>
+
+							<button onclick="AttemptOutput()" > click</button>
 						</div>
 					</div>
-					<div class="row coneCutoutOutputRow"></div>
+
+					<div class="row coneCutoutOutputRow">
+						<div class="col">
+
+						</div>
+
+						<div class="col">
+
+						</div>
+					</div>
+					
 				</div>
 			</div>
 
