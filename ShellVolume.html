@@ -53,7 +53,8 @@
 				</div>
 				<div class="col">
 					<div class="form-check">
-						<input class="form-control" name="flexNumberInput" id="shellVolumeInput" placeholder="10" disabled oninput="FieldInputChanged(this)">
+						<input class="form-control shellInput textInput" name="flexNumberInput" id="shellVolumeInput" value="10" disabled oninput="FieldInputChanged(this)">
+						<label calss="shellInput" for="shellVolumeInput">m³</label>
 					</div>
 				</div>
 			</div>
@@ -68,7 +69,8 @@
 				</div>
 				<div class="col">
 					<div class="form-check">
-						<input class="form-control" name="flexNumberInput" id="shellRadiusInput" oninput="FieldInputChanged(this)">
+						<input class="form-control shellInput textInput" name="flexNumberInput" id="shellRadiusInput" oninput="FieldInputChanged(this)">
+						<label calss="shellInput" for="shellRadiusInput">mm</label>
 					</div>
 				</div>
 			</div>
@@ -83,11 +85,29 @@
 				</div>
 				<div class="col">
 					<div class="form-check">
-						<input class="form-control" name="flexNumberInput" id="shellHeightInput" oninput="FieldInputChanged(this)">
+						<input class="form-control shellInput textInput" name="flexNumberInput" id="shellHeightInput" oninput="FieldInputChanged(this)">
+						<label calss="shellInput" for="shellHeightInput">mm</label>
 					</div>
 				</div>
 			</div>
 
+
+			<div class="row">
+				<div class="col">
+					<p> Shell Surface Area: </p>
+						
+
+					<input class="form-control shellInput textInput" name="flexNumberInput" id="shellSurfaceArea" disabled>
+					<label calss="shellInput" for="shellSurfaceArea">m²</label>
+				</div>
+
+				<div class="col">
+					<p>	Shell Circumference: </p>
+
+					<input class="form-control shellInput textInput" name="flexNumberInput" id="shellCircumference" disabled>
+					<label calss="shellInput" for="shellCircumference">mm</label>
+				</div>
+			</div>
 
 			<!-- <div class="row inputRow">
 				<div class="col inputCol">

@@ -43,6 +43,10 @@ function UpdateFields()
 	let radius = document.getElementById(ShellRadiusInput).value / 1000; // convert mm to meters
 	let height = document.getElementById(ShellHeightInput).value / 1000; // convert mm to meters
 
+	console.log(volume);
+	console.log(radius);
+	console.log(height);
+
 	/**/ if (lastEditedField == ShellVolumeInput)
 	{
 		// changed the volume
@@ -87,6 +91,13 @@ function UpdateFields()
 			UpdateVolume(radius, height);
 		}
 	}
+
+	volume = document.getElementById(ShellVolumeInput).value; // is in meters cubed
+	radius = document.getElementById(ShellRadiusInput).value / 1000; // convert mm to meters
+	height = document.getElementById(ShellHeightInput).value / 1000; // convert mm to meters
+
+	UpdateCircumference(radius);
+	UpdateSurfaceArea(radius, height);
 }
 
 function UpdateVolume(radius, height)
@@ -102,4 +113,14 @@ function UpdateRadius(volume, height)
 function UpdateHeight(volume, radius)
 {
 	document.getElementById(ShellHeightInput).value = volume / (Math.PI * radius * radius) * 1000;
+}
+
+function UpdateSurfaceArea(radius, height)
+{
+	document.getElementById("shellSurfaceArea").value = 2 * Math.PI * radius * height;
+}
+
+function UpdateCircumference(radius)
+{
+	document.getElementById("shellCircumference").value = 2 * Math.PI * radius * 1000;
 }

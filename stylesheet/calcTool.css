@@ -43,3 +43,14 @@ h4, h6
 	margin-left: 5%;
 	margin-right: 5%;
 }
+
+.shellInput
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.textInput
+{
+	width: 70%;
+}
