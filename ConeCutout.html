@@ -32,7 +32,6 @@
 								<li><a class="dropdown-item" href="ConeCutout.html">Cone Cutout</a></li>
 								<li><a class="dropdown-item" href="ShellVolume.html">Shell Volume</a></li>
 								<li><a class="dropdown-item" href="Vent.html">Vent</a></li>
-								<li><a class="dropdown-item" href="ShellSurfaceArea.html">Shell Surface Area</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -40,124 +39,155 @@
 			</div>
 		</nav>
 
+
+
 		<div class="container">
-			<div class="row inputRow">
-				<div class="col inputCol">
-					<div class="row">
-						<h6>Cone Pitch</h6>
-						<div class="col">
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_5" onclick="DefaultRadioClicked()">
-								<label class="form-check-label" for="conePitch_5">
-									5&deg;
-								</label>
-							</div>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_15" onclick="DefaultRadioClicked()">
-								<label class="form-check-label" for="conePitch_15">
-									15&deg;
-								</label>
-							</div>
-					
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_25" onclick="DefaultRadioClicked()">
-								<label class="form-check-label" for="conePitch_25">
-									25&deg;
-								</label>
-							</div>
-							
-							<br>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_custom" onclick="OtherRadioClicked()">
-								<label class="form-check-label" for="conePitch_custom">
-									Other: 
-								</label>
-							</div>
-							
-							<div class="form-check">
-								<input class="form-control" name="flexNumberInput" id="conePitch_customValue" disabled oninput="CheckInput(this)">
-							</div>
-
-						</div>
-
-						<div class="col">
-					
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_10" onclick="DefaultRadioClicked()">
-								<label class="form-check-label" for="conePitch_10">
-									10&deg;
-								</label>
-							</div>
-							
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_20" onclick="DefaultRadioClicked()">
-								<label class="form-check-label" for="conePitch_20">
-									20&deg;
-								</label>
-							</div>
-
-							<div class="form-check">
-								<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_30" onclick="DefaultRadioClicked()" checked>
-								<label class="form-check-label" for="conePitch_30">
-									30&deg;
-								</label>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-
-				<div class="col inputCol">
-
-					<h6>Tank Dimensions</h6>
-					<div class="mb-3">
-						<label for="tankRadiusInput" class="form-label">Tank Radius (mm)</label>
-						<input class="form-control" id="tankRadiusInput" oninput="CheckInput(this)">
-					</div>
-
-					<div class="mb-3">
-						<label for="knuckleValueInput" class="form-label">Value Added for Knuckle (A) (mm)</label>
-						<input class="form-control" id="knuckleValueInput" oninput="CheckInput(this)">
-					</div>
-				</div>
-			</div>
-
-			<div class="row outputRow">
-				<div class="col outputCol">
-					<div class="row">
-						<div class="col">
-							<div class="mb-3">
-								<label for="coneTotalRadius" class="form-label">Cone Total Radius (mm)</label>
-								<input class="form-control" id="coneTotalRadius" readonly>
-							</div>
-	
-							<div class="mb-3">
-								<label for="coneCutoutLength" class="form-label">Cone Cutout Length (mm)</label>
-								<input class="form-control" id="coneCutoutLength" readonly>
-							</div>
-						</div>
-
-						<div class="col">
-							<div class="mb-3">
-								<label for="coneSurfaceArea" class="form-label">Cone Surface Area (m²)</label>
-								<input class="form-control" id="coneSurfaceArea" readonly>
-							</div>
-	
-							<div class="mb-3">
-								<label for="coneVolume" class="form-label">Cone Volume (m³)</label>
-								<input class="form-control" id="coneVolume" readonly>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
 			<div class="row">
-				<div class="col controlsCol">
-					<button class="btn btn-info" onclick="ClearAll()">Clear All</button>
-					<button class="btn btn-success" onclick="AttemptConeCutoutOutput()">Submit</button>
+				<!-- input -->
+				<div class="col">
+					<!-- Cone pitch input -->
+					<div class="row">
+						<div class="col inputCol">
+							<h6>Cone Pitch</h6>
+							<div class="row">
+								<div class="col">
+									
+									<div class="row"> <!-- 5 deg -->
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_5" onclick="DefaultRadioClicked()">
+											<label class="form-check-label" for="conePitch_5">
+												5&deg;
+											</label>
+										</div>
+									</div>
+
+									<div class="row"> <!-- 15 deg -->
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_15" onclick="DefaultRadioClicked()">
+											<label class="form-check-label" for="conePitch_15">
+												15&deg;
+											</label>
+										</div>
+									</div>
+
+									<div class="row"> <!-- 25 deg -->
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_25" onclick="DefaultRadioClicked()">
+											<label class="form-check-label" for="conePitch_25">
+												25&deg;
+											</label>
+										</div>
+									</div>
+
+									<div class="row"> <!-- custom -->
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_custom" onclick="OtherRadioClicked()">
+											<label class="form-check-label" for="conePitch_custom">
+												Other: 
+											</label>
+										</div>
+										
+										<div class="form-check">
+											<input class="form-control textInputWithUnitLabel" name="flexNumberInput" id="conePitch_customValue" disabled oninput="CheckInput(this)">
+											<label for="flexNumberInput">&deg;</label>
+										</div>
+									</div>
+									
+								</div>
+
+								<div class="col">
+
+									<div class="row"> <!-- 10 deg -->
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_10" onclick="DefaultRadioClicked()">
+											<label class="form-check-label" for="conePitch_10">
+												10&deg;
+											</label>
+										</div>
+									</div>
+
+									<div class="row"> <!-- 20 deg -->
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_20" onclick="DefaultRadioClicked()">
+											<label class="form-check-label" for="conePitch_20">
+												20&deg;
+											</label>
+										</div>
+									</div>
+
+									<div class="row"> <!-- 30 deg -->
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="flexRadioDefault" id="conePitch_30" onclick="DefaultRadioClicked()" checked>
+											<label class="form-check-label" for="conePitch_30">
+												30&deg;
+											</label>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Tank dims -->
+					<div class="row">
+						<div class="col inputCol">
+							<h6>Tank Dimensions</h6>
+							<!-- rank radius --> 
+							<div class="row">
+								<div class="form-check">
+									<label for="tankRadiusInput" class="form-label">Tank Radius</label>
+									<input class="form-control textInputWithUnitLabel" id="tankRadiusInput" oninput="CheckInput(this)">
+									<label for="tankRadiusInput" class="unitLabelForTextInput">mm</label>
+								</div>
+							</div>
+
+							<!-- knuckle radius -->
+							<div class="row">
+								<div class="form-check">
+									<label for="knuckleValueInput" class="form-label">Value Added for Knuckle (A)</label>
+									<input class="form-control textInputWithUnitLabel" id="knuckleValueInput" oninput="CheckInput(this)">
+									<label for="tankRadiusInput" class="unitLabelForTextInput">mm</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Controls -->
+					<div class="row">
+						<div class="col controlsCol">
+							<button class="btn btn-info" onclick="ClearAll()">Clear All</button>
+							<button class="btn btn-success" onclick="AttemptConeCutoutOutput()">Submit</button>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- output -->
+				<div class="col">
+					<div class="row">
+						<label for="coneTotalRadius">Cone Total Radius</label>
+						<input class="form-control textInputWithUnitLabel" id="coneTotalRadius" readonly>
+						<label for="coneTotalRadius " class="unitLabelForTextInput">mm<label>
+					</div>
+
+					<div class="row">
+						<label for="coneCutoutLength">Cone Cutout Length</label>
+						<input class="form-control textInputWithUnitLabel" id="coneCutoutLength" readonly>
+						<label for="coneCutoutLength " class="unitLabelForTextInput">mm<label>
+					</div>
+
+					<div class="row">
+						<label for="coneSurfaceArea">Cone Surface Area</label>
+						<input class="form-control textInputWithUnitLabel" id="coneSurfaceArea" readonly>
+						<label for="coneSurfaceArea " class="unitLabelForTextInput">m²<label>
+					</div>
+
+					<div class="row">
+						<label for="coneVolume">Cone Volume</label>
+						<input class="form-control textInputWithUnitLabel" id="coneVolume" readonly>
+						<label for="coneVolume " class="unitLabelForTextInput">m³<label>
+					</div>
 				</div>
 			</div>
 		</div>

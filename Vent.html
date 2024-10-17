@@ -32,7 +32,6 @@
 								<li><a class="dropdown-item" href="ConeCutout.html">Cone Cutout</a></li>
 								<li><a class="dropdown-item" href="ShellVolume.html">Shell Volume</a></li>
 								<li><a class="dropdown-item" href="Vent.html">Vent</a></li>
-								<li><a class="dropdown-item" href="ShellSurfaceArea.html">Shell Surface Area</a></li>
 							</ul>
 						</li>
 					</ul>
@@ -45,19 +44,17 @@
 				<div class="col inputCol">
 					
 					<div class="mb-3">
-						<label for="innerRadiusInput" class="form-label">Inside Radius (mm)</label>
+						<label for="innerRadiusInput" class="form-label">Inside Radius</label>
 						<input class="form-control" id="innerRadiusInput" oninput="CheckInput(this)">
+						<label for="innerRadiusInput" class="form-label">mm</label>
 					</div>
 
 					<div class="mb-3">
-						<label for="thicknessInput" class="form-label">Thickness (mm)</label>
+						<label for="thicknessInput" class="form-label">Thickness</label>
 						<input class="form-control" id="thicknessInput" oninput="CheckInput(this)">
+						<label for="thicknessInput" class="form-label">mm</label>
 					</div>
 
-				</div>
-
-				<div class="col inputCol">
-					
 					<div class="form-check">
 						<input class="form-check-input" type="radio" name="flexRadioDefault" id="noMeshRadio" onclick="DefaultRadioClicked()">
 						<label class="form-check-label" for="noMeshRadio">No Mesh</label>
@@ -76,13 +73,9 @@
 					</div>
 
 				</div>
-			</div>
 
-			<div class="row outputRow">
 				<div class="col outputCol">
-
-				</div>
-				<div class="col outputCol">
+					
 
 				</div>
 			</div>
