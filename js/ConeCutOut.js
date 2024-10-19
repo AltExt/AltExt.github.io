@@ -65,10 +65,10 @@ function AttemptConeCutoutOutput()
 	const H = Math.sqrt( (R2*R2) - (R1*R1) );
 	const Volume = (PI * R1 * R1 * H) / 3
 
-	document.getElementById("coneTotalRadius").value = R2;
-	document.getElementById("coneCutoutLength").value = CutoutLength;
-	document.getElementById("coneSurfaceArea").value = CoutoutSurfaceaArea / (1000 * 1000); // convert to m^2
-	document.getElementById("coneVolume").value = Volume / (1000 * 1000 * 1000); // convert to m^3
+	document.getElementById("coneTotalRadius").value = ToString(R2);
+	document.getElementById("coneCutoutLength").value = ToString(CutoutLength);
+	document.getElementById("coneSurfaceArea").value = ToString(CoutoutSurfaceaArea / (1000 * 1000)); // convert to m^2
+	document.getElementById("coneVolume").value = ToString(Volume / (1000 * 1000 * 1000)); // convert to m^3
 }
 
 function ClearAll()

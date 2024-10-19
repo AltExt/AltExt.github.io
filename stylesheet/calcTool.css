@@ -51,6 +51,13 @@ h4, h6
 	width: 70%;
 }
 
+.textInputWithUnitLabelSmall
+{
+	display: inline-block;
+	vertical-align: middle;
+	width: 40%;
+}
+
 .unitLabelForTextInput
 {
 	display: inline-block;

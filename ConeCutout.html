@@ -16,7 +16,7 @@
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">Cone Cutout</a> <!-- CHANGE THIS TITLE! -->
+				<a class="navbar-brand" href="#">Cone Cutout</a> 
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
@@ -135,20 +135,16 @@
 							<h6>Tank Dimensions</h6>
 							<!-- rank radius --> 
 							<div class="row">
-								<div class="form-check">
-									<label for="tankRadiusInput" class="form-label">Tank Radius</label>
+									<label for="tankRadiusInput">Tank Radius</label>
 									<input class="form-control textInputWithUnitLabel" id="tankRadiusInput" oninput="CheckInput(this)">
 									<label for="tankRadiusInput" class="unitLabelForTextInput">mm</label>
-								</div>
 							</div>
 
 							<!-- knuckle radius -->
 							<div class="row">
-								<div class="form-check">
-									<label for="knuckleValueInput" class="form-label">Value Added for Knuckle (A)</label>
+									<label for="knuckleValueInput">Value Added for Knuckle (A)</label>
 									<input class="form-control textInputWithUnitLabel" id="knuckleValueInput" oninput="CheckInput(this)">
 									<label for="tankRadiusInput" class="unitLabelForTextInput">mm</label>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -166,27 +162,31 @@
 				<!-- output -->
 				<div class="col">
 					<div class="row">
-						<label for="coneTotalRadius">Cone Total Radius</label>
-						<input class="form-control textInputWithUnitLabel" id="coneTotalRadius" readonly>
-						<label for="coneTotalRadius " class="unitLabelForTextInput">mm<label>
-					</div>
+						<div class="col inputCol">
+							<div class="row">
+								<label for="coneTotalRadius">Cone Total Radius</label>
+								<input class="form-control textInputWithUnitLabel" id="coneTotalRadius" readonly>
+								<label for="coneTotalRadius " class="unitLabelForTextInput">mm<label>
+							</div>
 
-					<div class="row">
-						<label for="coneCutoutLength">Cone Cutout Length</label>
-						<input class="form-control textInputWithUnitLabel" id="coneCutoutLength" readonly>
-						<label for="coneCutoutLength " class="unitLabelForTextInput">mm<label>
-					</div>
+							<div class="row">
+								<label for="coneCutoutLength">Cone Cutout Length</label>
+								<input class="form-control textInputWithUnitLabel" id="coneCutoutLength" readonly>
+								<label for="coneCutoutLength " class="unitLabelForTextInput">mm<label>
+							</div>
 
-					<div class="row">
-						<label for="coneSurfaceArea">Cone Surface Area</label>
-						<input class="form-control textInputWithUnitLabel" id="coneSurfaceArea" readonly>
-						<label for="coneSurfaceArea " class="unitLabelForTextInput">m²<label>
-					</div>
+							<div class="row">
+								<label for="coneSurfaceArea">Cone Surface Area</label>
+								<input class="form-control textInputWithUnitLabel" id="coneSurfaceArea" readonly>
+								<label for="coneSurfaceArea " class="unitLabelForTextInput">m²<label>
+							</div>
 
-					<div class="row">
-						<label for="coneVolume">Cone Volume</label>
-						<input class="form-control textInputWithUnitLabel" id="coneVolume" readonly>
-						<label for="coneVolume " class="unitLabelForTextInput">m³<label>
+							<div class="row">
+								<label for="coneVolume">Cone Volume</label>
+								<input class="form-control textInputWithUnitLabel" id="coneVolume" readonly>
+								<label for="coneVolume " class="unitLabelForTextInput">m³<label>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -10,7 +10,7 @@
 		<link rel="shortcut icon" type="img/jpg" href="./images/coding_icon.png">
 		<link rel="stylesheet" type="text/css" href="./stylesheet/calcTool.css">
 		<script src="./js/calcTool.js"> </script>
-		<script src="./js/ConeCutout.js"> </script>
+		<script src="./js/Vent.js"> </script>
 	</head>
 
 	<body>
@@ -43,40 +43,87 @@
 			<div class="row inputRow">
 				<div class="col inputCol">
 					
-					<div class="mb-3">
-						<label for="innerRadiusInput" class="form-label">Inside Radius</label>
-						<input class="form-control" id="innerRadiusInput" oninput="CheckInput(this)">
-						<label for="innerRadiusInput" class="form-label">mm</label>
+					<!-- Inside radius input -->
+					<div class="row">
+							<label for="innerRadiusInput">Inside Radius</label>
+							<input class="form-control textInputWithUnitLabel" name="flexNumberInput" id="innerRadiusInput" oninput="ValidateNumber(this)">
+							<label for="innerRadiusInput" class="unitLabelForTextInput">mm</label>
 					</div>
 
-					<div class="mb-3">
-						<label for="thicknessInput" class="form-label">Thickness</label>
-						<input class="form-control" id="thicknessInput" oninput="CheckInput(this)">
-						<label for="thicknessInput" class="form-label">mm</label>
+					<!-- Pipe thickness input -->
+					<div class="row">
+							<label for="thicknessInput" class="form-label">Thickness</label>
+							<input class="form-control textInputWithUnitLabel" name="flexNumberInput" id="thicknessInput" oninput="ValidateNumber(this)">
+							<label for="thicknessInput" class="unitLabelForTextInput">mm</label>
 					</div>
 
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="noMeshRadio" onclick="DefaultRadioClicked()">
-						<label class="form-check-label" for="noMeshRadio">No Mesh</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="meshR4Radio" onclick="DefaultRadioClicked()">
-						<label class="form-check-label" for="meshR4Radio">Mesh on R4</label>
-					</div>
-					<div class="form-check">
-						<input class="form-check-input" type="radio" name="flexRadioDefault" id="meshH3Radio" onclick="DefaultRadioClicked()">
-						<label class="form-check-label" for="meshH3Radio">Mesh on H3</label>
-					</div>
-							
-					<div class="form-check">
-						<input class="form-control" name="flexNumberInput" id="meshPercentageInput" disabled oninput="CheckInput(this)">
+					<!-- Mesh input -->
+					<div class="row">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="noMeshRadio" checked onclick="NoMesh()">
+							<label class="form-check-label" for="noMeshRadio">No Mesh</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="meshR4Radio" onclick="RadiusMesh()">
+							<label class="form-check-label" for="meshR4Radio">Mesh on R4</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="flexRadioDefault" id="meshH3Radio" onclick="HeightMesh()">
+							<label class="form-check-label" for="meshH3Radio">Mesh on H3</label>
+						</div>
+						<label for="meshPercentageInput">Mesh Percentage:</label>
+						<input class="form-control textInputWithUnitLabel" name="flexNumberInput" id="meshPercentageInput" disabled oninput="ValidateNumber(this)">
+						<label for="meshPercentageInput" class="unitLabelForTextInput">%</label>
 					</div>
 
+					<!-- Controls -->
+					<div class="row">
+						<div class="col controlsCol">
+							<button class="btn btn-info" onclick="ClearAll()">Clear All</button>
+							<button class="btn btn-success" onclick="AttemptVentCalc()">Submit</button>
+						</div>
+					</div>
+						
 				</div>
 
 				<div class="col outputCol">
+					<div class="row">
+						<label for="R1output" class="unitLabelForTextInput">R1</label>
+						<input class="form-control textInputWithUnitLabelSmall" name="flexNumberInput" id="R1output" disabled>
+						<label for="R1output" class="unitLabelForTextInput">mm</label>
+					</div>
+					<div class="row">
+						<label for="R2output" class="unitLabelForTextInput">R2</label>
+						<input class="form-control textInputWithUnitLabelSmall" name="flexNumberInput" id="R2output" disabled>
+						<label for="R2output" class="unitLabelForTextInput">mm</label>
+					</div>
+					<div class="row">
+						<label for="R3output" class="unitLabelForTextInput">R3</label>
+						<input class="form-control textInputWithUnitLabelSmall" name="flexNumberInput" id="R3output" disabled>
+						<label for="R3output" class="unitLabelForTextInput">mm</label>
+					</div>
+					<div class="row">
+						<label for="R4output" class="unitLabelForTextInput">R4</label>
+						<input class="form-control textInputWithUnitLabelSmall" name="flexNumberInput" id="R4output" disabled>
+						<label for="R4output" class="unitLabelForTextInput">mm</label>
+					</div>
+					<br>
+					<div class="row">
+						<label for="H1output" class="unitLabelForTextInput">H1</label>
+						<input class="form-control textInputWithUnitLabelSmall" name="flexNumberInput" id="H1output" disabled>
+						<label for="H1output" class="unitLabelForTextInput">mm</label>
+					</div>
+					<div class="row">
+						<label for="H2output" class="unitLabelForTextInput">H2</label>
+						<input class="form-control textInputWithUnitLabelSmall" name="flexNumberInput" id="H2output" disabled>
+						<label for="H2output" class="unitLabelForTextInput">mm</label>
+					</div>
+					<div class="row">
+						<label for="H3output" class="unitLabelForTextInput">H3</label>
+						<input class="form-control textInputWithUnitLabelSmall" name="flexNumberInput" id="H3output" disabled>
+						<label for="H3output" class="unitLabelForTextInput">mm</label>
+					</div>
 					
-
 				</div>
 			</div>
 		</div>

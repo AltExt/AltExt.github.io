@@ -102,25 +102,25 @@ function UpdateFields()
 
 function UpdateVolume(radius, height)
 {
-	document.getElementById(ShellVolumeInput).value = (Math.PI * radius * radius * height);
+	document.getElementById(ShellVolumeInput).value = ToString(Math.PI * radius * radius * height);
 }
 
 function UpdateRadius(volume, height)
 {
-	document.getElementById(ShellRadiusInput).value = Math.sqrt( volume / (Math.PI * height) ) * 1000;
+	document.getElementById(ShellRadiusInput).value = ToString(Math.sqrt( volume / (Math.PI * height) ) * 1000);
 }
 
 function UpdateHeight(volume, radius)
 {
-	document.getElementById(ShellHeightInput).value = volume / (Math.PI * radius * radius) * 1000;
+	document.getElementById(ShellHeightInput).value = ToString(volume / (Math.PI * radius * radius) * 1000);
 }
 
 function UpdateSurfaceArea(radius, height)
 {
-	document.getElementById("shellSurfaceArea").value = 2 * Math.PI * radius * height;
+	document.getElementById("shellSurfaceArea").value = ToString(2 * Math.PI * radius * height);
 }
 
 function UpdateCircumference(radius)
 {
-	document.getElementById("shellCircumference").value = 2 * Math.PI * radius * 1000;
+	document.getElementById("shellCircumference").value = ToString(2 * Math.PI * radius * 1000);
 }
