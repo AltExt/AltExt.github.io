@@ -1,5 +1,19 @@
 let meshLocation = 0;
 
+// This multiplies the initial area by 4%, to ensure that airflow through the vent is not going to be obstructed
+// Not sure why 4% was chosen, but that's what I have in the original code and I can't find my notes on it and I didn't believe in comments back then apparently
+const AREA_MULTIPLIER = 1.04; 
+
+function GetR1()
+{
+	return parseFloat(document.getElementById("innerRadiusInput").value)
+}
+
+function GetT()
+{
+	return parseFloat(document.getElementById("thicknessInput").value)
+}
+
 function NoMesh()
 {
 	document.getElementById("noMeshRadio").checked = true;
@@ -33,6 +47,20 @@ function ClearAll()
 {
 	document.getElementById("innerRadiusInput").value = "";
 	document.getElementById("thicknessInput").value = "";
+	
+	document.getElementById("R1output").value = "";
+	document.getElementById("R2output").value = "";
+	document.getElementById("R3output").value = "";
+	document.getElementById("R4output").value = "";
+
+	document.getElementById("R2output").disabled = true;
+	document.getElementById("R3output").disabled = true;
+	document.getElementById("R4output").disabled = true;
+
+	document.getElementById("H1output").value = "";
+	document.getElementById("H2output").value = "";
+	document.getElementById("H3output").value = "";
+	
 	NoMesh();
 }
 
@@ -92,18 +120,15 @@ function AttemptVentCalc()
 		h3 = r1^2 / (2 * r3)
 
 	*/
+	
 
+	const R1 = GetR1();
+	const T = GetT();
 
-	// This multiplies the initial area by 4%, to ensure that airflow through the vent is not going to be obstructed
-	// Not sure why 4% was chosen, but that's what I have in the original code and I can't find my notes on it and I didn't believe in comments back then apparently
-	const AREA_MULTIPLIER = 1.04; 
+	if (isNaN(R1) || isNaN(T)) return;
 
-	// Grab values from hmtl
-	const R1 = parseFloat(document.getElementById("innerRadiusInput").value);
-	const T = parseFloat(document.getElementById("thicknessInput").value);
-
-	// Calc target area used in all future calcs
 	const TARGET_AREA = R1 * R1 * AREA_MULTIPLIER;
+
 
 	let R2 = Math.sqrt( Math.pow(R1 + T, 2) + TARGET_AREA );
 	let R3 = Math.sqrt( Math.pow(R2 + T, 2) + TARGET_AREA );
@@ -138,9 +163,48 @@ function AttemptVentCalc()
 	document.getElementById("R3output").value = ToString(R3);
 	document.getElementById("R4output").value = ToString(R4);
 
+	document.getElementById("R2output").disabled = false;
+	document.getElementById("R3output").disabled = false;
+	document.getElementById("R4output").disabled = false;
+
 	document.getElementById("H1output").value = ToString(H1);
 	document.getElementById("H2output").value = ToString(H2);
 	document.getElementById("H3output").value = ToString(H3);
+}
 
-	// from here need to add functionallity to allow user to edit each number from R2 and have remaining radii and heights recalculate
+function ReCalcFromR2(input)
+{
+	ValidateNumber(input);
+
+	const R1 = GetR1();
+	const T = GetT();
+
+	if (isNaN(R1) || isNaN(T)) return;
+
+	const TARGET_AREA = R1 * R1 * AREA_MULTIPLIER;
+
+	let newR2 = parseFloat(document.getElementById("R2output").value);
+
+	let R3 = Math.sqrt( Math.pow(newR2 + T, 2) + TARGET_AREA );
+	let R4 = Math.sqrt( Math.pow(R3 + T, 2) + TARGET_AREA );
+
+	document.getElementById("R3output").value = ToString(R3);
+	document.getElementById("R4output").value = ToString(R4);
+}
+
+function ReCalcFromR3(input)
+{	ValidateNumber(input);
+
+	const R1 = GetR1();
+	const T = GetT();
+
+	if (isNaN(R1) || isNaN(T)) return;
+
+	const TARGET_AREA = R1 * R1 * AREA_MULTIPLIER;
+
+	let newR3 = parseFloat(document.getElementById("R3output").value);
+
+	let R4 = Math.sqrt( Math.pow(newR3 + T, 2) + TARGET_AREA );
+	
+	document.getElementById("R4output").value = ToString(R4);
 }

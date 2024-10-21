@@ -5,27 +5,29 @@ const ShellHeightInput = "shellHeightInput";
 
 function VolumeRadioClicked()
 {
-	UpdateInputFields(ShellVolumeInput, ShellRadiusInput, ShellHeightInput);
+	UpdateInputFields(ShellVolumeInput);
 	UpdateFields();
 }
 
 function RadiusRadioClicked()
 {
-	UpdateInputFields(ShellRadiusInput, ShellVolumeInput, ShellHeightInput);
+	UpdateInputFields(ShellRadiusInput);
 	UpdateFields();
 }
 
 function HeightRadioClicked()
 {
-	UpdateInputFields(ShellHeightInput, ShellVolumeInput, ShellRadiusInput);
+	UpdateInputFields(ShellHeightInput);
 	UpdateFields();
 }
 
-function UpdateInputFields(enabledID, disabledID_1, disabledID_2)
+function UpdateInputFields(enabledID)
 {
+	document.getElementById(ShellVolumeInput).disabled = false;
+	document.getElementById(ShellRadiusInput).disabled = false;
+	document.getElementById(ShellHeightInput).disabled = false;
+
 	document.getElementById(enabledID).disabled = true;
-	document.getElementById(disabledID_1).disabled = false;
-	document.getElementById(disabledID_2).disabled = false;
 }
 
 function FieldInputChanged(input)
