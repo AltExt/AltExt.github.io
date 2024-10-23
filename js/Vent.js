@@ -1,69 +1,82 @@
+// global variables to track the mesh location
 let meshLocation = 0;
+const NO_MESH = 0;
+const R4_MESH = 1;
+const H3_MESH = 2;
 
 // This multiplies the initial area by 4%, to ensure that airflow through the vent is not going to be obstructed
-// Not sure why 4% was chosen, but that's what I have in the original code and I can't find my notes on it and I didn't believe in comments back then apparently
 const AREA_MULTIPLIER = 1.04; 
 
-function GetR1()
-{
-	return parseFloat(document.getElementById("innerRadiusInput").value)
-}
+// some get / set functions for reading and writing data on the page
+// I prefer this method of accessing data - have the ID string in only one location
+function GetInputR1() {	return parseFloat(document.getElementById("innerRadiusInput").value); }
 
-function GetT()
-{
-	return parseFloat(document.getElementById("thicknessInput").value)
-}
+function GetT() { return parseFloat(document.getElementById("thicknessInput").value); }
+function GetR1() { return parseFloat(document.getElementById("R1output").value); }
+function GetR2() { return parseFloat(document.getElementById("R2output").value); }
+function GetR3() { return parseFloat(document.getElementById("R3output").value); }
+function GetMeshPercentage() { return parseFloat(document.getElementById("meshPercentageInput").value); }
 
+function SetR1(num) { document.getElementById("R1output").value = ToString(num); }
+function SetR2(num) { document.getElementById("R2output").value = ToString(num); }
+function SetR3(num) { document.getElementById("R3output").value = ToString(num); }
+function SetR4(num) { document.getElementById("R4output").value = ToString(num); }
+function SetH1(num) { document.getElementById("H1output").value = ToString(num); }
+function SetH2(num) { document.getElementById("H2output").value = ToString(num); }
+function SetH3(num) { document.getElementById("H3output").value = ToString(num); }
+
+// Resets the mesh input fields to default
 function NoMesh()
 {
 	document.getElementById("noMeshRadio").checked = true;
 	document.getElementById("meshR4Radio").checked = false;
 	document.getElementById("meshH3Radio").checked = false;
 
-	meshLocation = 0;
+	meshLocation = NO_MESH;
 
 	document.getElementById("meshPercentageInput").disabled = true;
 }
 
-function RadiusMesh()
+function Test(input)
+{
+	console.log(input);
+}
+
+// Triggered by "Mesh on R4" or "Mesh on H3" radio
+// Sets mesh location to R4 or H3 and allows mesh percentage input
+function SetMeshLocation(location)
 {
 	document.getElementById("noMeshRadio").checked = false;
 
-	meshLocation = 1;
+	meshLocation = location;
 
 	document.getElementById("meshPercentageInput").disabled = false;
 }
 
-function HeightMesh()
-{
-	document.getElementById("noMeshRadio").checked = false;
-
-	meshLocation = 2;
-
-	document.getElementById("meshPercentageInput").disabled = false;
-}
-
+// Resets all input fields to blank, calls NoMesh to reset mesh input
 function ClearAll()
 {
 	document.getElementById("innerRadiusInput").value = "";
 	document.getElementById("thicknessInput").value = "";
 	
-	document.getElementById("R1output").value = "";
-	document.getElementById("R2output").value = "";
-	document.getElementById("R3output").value = "";
-	document.getElementById("R4output").value = "";
+	SetR1("");
+	SetR2("");
+	SetR3("");
+	SetR4("");
+
+	SetH1("");
+	SetH2("");
+	SetH3("");
 
 	document.getElementById("R2output").disabled = true;
 	document.getElementById("R3output").disabled = true;
 	document.getElementById("R4output").disabled = true;
-
-	document.getElementById("H1output").value = "";
-	document.getElementById("H2output").value = "";
-	document.getElementById("H3output").value = "";
 	
 	NoMesh();
 }
 
+// Called by the "Sumbit" button
+// Attemts to perform the neccessary calculations, will return before setting any values if an error occurs
 function AttemptVentCalc()
 {
 	/*
@@ -122,10 +135,16 @@ function AttemptVentCalc()
 	*/
 	
 
-	const R1 = GetR1();
+	const R1 = GetInputR1();
 	const T = GetT();
 
-	if (isNaN(R1) || isNaN(T)) return;
+	if (isNaN(R1) || isNaN(T))
+	{
+		if (isNaN(R1)) console.log("R1 was NaN");
+		if (isNaN(T)) console.log("T was NaN");
+		console.log("Aborting the calculations");
+		return;
+	}
 
 	const TARGET_AREA = R1 * R1 * AREA_MULTIPLIER;
 
@@ -139,15 +158,23 @@ function AttemptVentCalc()
 	let H3 = TARGET_AREA / (2 * R3);
 
 	// Now, if there is a mesh present on the vent to stop insects etc, this becomes complicated
-	if (meshLocation != 0)
+	if (meshLocation != NO_MESH)
 	{
 		// The mesh will take up a certain percentage of the area, either on the vertical part of H3 or the horizontal part of R4
 		// because the airflow must remain the same even with the mesh present, this means that one of those dimensions must grow
 		// we do this by scaling the target area and re doing the calc for that dimension
+		const MESH_INPUT = GetMeshPercentage();
 
-		const MESH_PERCENTAGE = parseFloat(document.getElementById("meshPercentageInput").value) / 100;
+		if (isNaN(MESH_INPUT))
+		{
+			console.log("Mesh percentage input was Nan");
+			console.log("Aborting the calculations");
+			return;
+		}
+
+		const MESH_PERCENTAGE = MESH_INPUT / 100;
 		const MESH_SCALE = 1 / MESH_PERCENTAGE;
-		if (meshLocation == 1)
+		if (meshLocation == R4_MESH)
 		{	// radius (R4)
 			R4 = Math.sqrt( Math.pow(R3 + T, 2) + (TARGET_AREA * MESH_SCALE) );
 		}
@@ -158,53 +185,68 @@ function AttemptVentCalc()
 	}
 
 	// data out
-	document.getElementById("R1output").value = ToString(R1);
-	document.getElementById("R2output").value = ToString(R2);
-	document.getElementById("R3output").value = ToString(R3);
-	document.getElementById("R4output").value = ToString(R4);
+	SetR1(R1);
+	SetR2(R2);
+	SetR3(R3);
+	SetR4(R4);
+
+	SetH1(H1);
+	SetH2(H2);
+	SetH3(H3);
 
 	document.getElementById("R2output").disabled = false;
 	document.getElementById("R3output").disabled = false;
 	document.getElementById("R4output").disabled = false;
-
-	document.getElementById("H1output").value = ToString(H1);
-	document.getElementById("H2output").value = ToString(H2);
-	document.getElementById("H3output").value = ToString(H3);
 }
 
+// Once the initial calculation has been complete, the user can then edit the values in R2, R3 and R4 output boxes
+// This allows them to select more round values (75 vs. 73.13548)
+// If this happened the values must be re calculated from that point
 function ReCalcFromR2(input)
 {
 	ValidateNumber(input);
 
-	const R1 = GetR1();
+	const R1 = GetInputR1();
 	const T = GetT();
+	let newR2 = GetR2();
 
-	if (isNaN(R1) || isNaN(T)) return;
+	if (isNaN(R1) || isNaN(T) || isNaN(newR2))
+	{
+		if (isNaN(R1)) console.log("R1 was NaN");
+		if (isNaN(T)) console.log("T was NaN");
+		if (isNaN(newR2)) console.log("newR2 was NaN");
+		console.log("Aborting the calculations");
+		return;
+	}
 
 	const TARGET_AREA = R1 * R1 * AREA_MULTIPLIER;
-
-	let newR2 = parseFloat(document.getElementById("R2output").value);
 
 	let R3 = Math.sqrt( Math.pow(newR2 + T, 2) + TARGET_AREA );
 	let R4 = Math.sqrt( Math.pow(R3 + T, 2) + TARGET_AREA );
 
-	document.getElementById("R3output").value = ToString(R3);
-	document.getElementById("R4output").value = ToString(R4);
+	SetR3(R3);
+	SetR4(R4);
 }
 
 function ReCalcFromR3(input)
 {	ValidateNumber(input);
 
-	const R1 = GetR1();
+	const R1 = GetInputR1();
 	const T = GetT();
+	let newR3 = GetR2();
 
-	if (isNaN(R1) || isNaN(T)) return;
+	if (isNaN(R1) || isNaN(T) || isNaN(newR3))
+	{
+		if (isNaN(R1)) console.log("R1 was NaN");
+		if (isNaN(T)) console.log("T was NaN");
+		if (isNaN(newR3)) console.log("newR3 was NaN");
+		console.log("Aborting the calculations");
+		return;
+	}
 
 	const TARGET_AREA = R1 * R1 * AREA_MULTIPLIER;
 
-	let newR3 = parseFloat(document.getElementById("R3output").value);
-
 	let R4 = Math.sqrt( Math.pow(newR3 + T, 2) + TARGET_AREA );
 	
-	document.getElementById("R4output").value = ToString(R4);
+	SetR4(R4);
 }

@@ -1,20 +1,30 @@
+// global variable to track the field that is currently being edited
 let lastEditedField = "";
+
+// because there are only 3 fields and I need to do comparisons eith their IDs I'm storing them globally here
 const ShellVolumeInput = "shellVolumeInput";
 const ShellRadiusInput = "shellRadiusInput";
 const ShellHeightInput = "shellHeightInput";
 
+// This tool is used when calculating the dimensions of a tank.
+// The user can "pin" one dimension that then won't change, and edit one of the 2 other dimensions
+// The dimension that wasn't pinned or edited will then be updated to maintain that tank size
+
+// Pins Volume
 function VolumeRadioClicked()
 {
 	UpdateInputFields(ShellVolumeInput);
 	UpdateFields();
 }
 
+// Pins Radius
 function RadiusRadioClicked()
 {
 	UpdateInputFields(ShellRadiusInput);
 	UpdateFields();
 }
 
+// Pins Height
 function HeightRadioClicked()
 {
 	UpdateInputFields(ShellHeightInput);
@@ -30,6 +40,7 @@ function UpdateInputFields(enabledID)
 	document.getElementById(enabledID).disabled = true;
 }
 
+// Tracks the last edited field
 function FieldInputChanged(input)
 {
 	ValidateNumber(input);
@@ -37,6 +48,8 @@ function FieldInputChanged(input)
 	UpdateFields();
 }
 
+// called each time any field in the tool is changed
+// determines which of the three was pinned, which was edited and then calculated a new value for the last dimension
 function UpdateFields()
 {
 	if (lastEditedField == "") return;
@@ -102,6 +115,8 @@ function UpdateFields()
 	UpdateSurfaceArea(radius, height);
 }
 
+// update functions calculate the new dimension from 2 inputs and write to the html
+// also have calculations for shell surface area and shell circumference for ease
 function UpdateVolume(radius, height)
 {
 	document.getElementById(ShellVolumeInput).value = ToString(Math.PI * radius * radius * height);
