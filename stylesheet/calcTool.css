@@ -73,9 +73,9 @@ h4, h6
 .ventDiagram
 {
 	display: block;
+	width: 50%;
+	height: auto;
 	margin-left: auto;
 	margin-right: auto;
-	height: auto;
-	width: 50%;
 	border-radius: 2%;
 }
