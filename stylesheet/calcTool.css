@@ -64,3 +64,18 @@ h4, h6
 	vertical-align: middle;
 	width: auto;
 }
+
+.imgContainer
+{
+	width: 100%;
+}
+
+.ventDiagram
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: auto;
+	width: 50%;
+	border-radius: 2%;
+}
