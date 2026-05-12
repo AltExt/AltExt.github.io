@@ -18,3 +18,9 @@ function ToString(input)
 	if (decimalIndex == -1) return output + ".00";
 	else return output.substring(0, decimalIndex + 1 /*precision value: */ + 4);
 }
+
+function GetNumber(input)
+{
+	let str = document.getElementById(input).value;
+	return Number(str);
+}

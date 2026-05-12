@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width" />
+	<title>Cowl Cutout</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="shortcut icon" type="img/jpg" href="./images/coding_icon.png">
+	<link rel="stylesheet" type="text/css" href="./stylesheet/calcTool.css">
+	<script src="./js/calcTool.js"></script>
+	<script src="./js/CowlCutout.js"></script>
+</head>
+
+	<body>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Cowl Cutout</a> <!-- CHANGE THIS TITLE! -->
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="index.html">Home</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Calculation Tools</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a class="dropdown-item" href="ConeCutout.html">Cone Cutout</a></li>
+								<li><a class="dropdown-item" href="ShellVolume.html">Shell Volume</a></li>
+								<li><a class="dropdown-item" href="Vent.html">Vent</a></li>
+								<li><a class="dropdown-item" href="CowlCutout.html">Cowl Cutout</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="row">
+				<div class="col inputCol">
+					<!-- Cowl Starting Diameter  (D) -->
+					<div class="row">
+						<div class="form-check">
+							<label for="flexNumberInput">D: </label>
+							<input class="form-control textInputWithUnitLabel" name="cowlDiameter" id="cowlDiameter" oninput="ValidateNumber(this)">
+						</div>
+					</div>
+					<!-- Cowl Pitch  (P) -->
+					<div class="row">
+						<div class="form-check">
+							<label for="flexNumberInput">P: </label>
+							<input class="form-control textInputWithUnitLabel" name="cowlPitch" id="cowlPitch" oninput="ValidateNumber(this)">
+						</div>
+					</div>
+					<!-- Thickness From Shell to cladding  (T) -->
+					<div class="row">
+						<div class="form-check">
+							<label for="flexNumberInput">T: </label>
+							<input class="form-control textInputWithUnitLabel" name="insulationThickness" id="insulationThickness" oninput="ValidateNumber(this)">
+						</div>
+					</div>
+					<!-- Additional Material For Fabrication  (M) -->
+					<div class="row">
+						<div class="form-check">
+							<label for="flexNumberInput">M: </label>
+							<input class="form-control textInputWithUnitLabel" name="additionalMaterial" id="additionalMaterial" oninput="ValidateNumber(this)">
+						</div>
+					</div>
+
+					<!-- Controls -->
+					<div class="row">
+						<div class="row controlsRow">
+							<button class="btn btn-info" onclick="ClearAll()">Clear All</button>
+							<button class="btn btn-success" onclick="PerformCalc()">Submit</button>
+						</div>
+					</div>
+
+				</div>
+
+				<div class="col outputCol">
+					<!-- R1 -->
+					<div class="row">
+						<label for="cowlInnerRadius">Cowl Inner Radius: </label>
+						<input class="form-control textInputWithUnitLabel" id="cowlInnerRadius" readonly>
+						<label for="cowlInnerRadius " class="unitLabelForTextInput">mm</label>
+					</div>
+					<!-- R2 -->
+					<div class="row">
+						<label for="cowlOuterRadius">Cowl Outer Radius: </label>
+						<input class="form-control textInputWithUnitLabel" id="cowlOuterRadius" readonly>
+						<label for="cowlOuterRadius " class="unitLabelForTextInput">mm</label>
+					</div>
+					<!-- Angle -->
+					<div class="row">
+						<label for="arcAngle">Arc Angle: </label>
+						<input class="form-control textInputWithUnitLabel" id="arcAngle" readonly>
+						<label for="arcAngle " class="unitLabelForTextInput">&deg;</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>
